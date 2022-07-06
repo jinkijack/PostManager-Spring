@@ -72,9 +72,12 @@
 			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
 			
 			<span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></span>
-			<input type="text" th:field="*{gender}" placeholder="Gênero" class="form-control mb-4 col-4">
+			<!--  <input type="text" th:field="*{gender}" placeholder="Gênero" class="form-control mb-4 col-4"> -->
 			
-			
+			<select id="gender" name="gender" th:field="*{gender}" class="form-control mb-4 col-4">
+    <option value="M">Masculino</option>
+    <option value="F">Feminino</option>
+    </select>
 			
 			<input type="hidden" id="id" th:field="*{id}">
 			

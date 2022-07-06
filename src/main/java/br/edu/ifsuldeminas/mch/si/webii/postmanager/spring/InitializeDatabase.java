@@ -6,9 +6,11 @@ import org.springframework.stereotype.Component;
 
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.Address;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.Cidade;
+import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.Funcionario;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.User;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.AddressRepository;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.CidadeRepository;
+import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.FuncionarioRepository;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.UserRepository;
 
 @Component
@@ -22,6 +24,9 @@ public class InitializeDatabase implements CommandLineRunner{
 	
 	@Autowired
 	private CidadeRepository cRepo;
+	
+	@Autowired
+	private FuncionarioRepository fRepo;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -60,11 +65,13 @@ public class InitializeDatabase implements CommandLineRunner{
 		luiza.setGender("F");
 		luiza.setAddress(aLuiza);
 		
+		Funcionario func = new Funcionario();
+		func.setName("joãozinho123");
+		func.setEmail("hoahda@gmail.com");
+		func.setGender("m");
 		
 		
-		
-		
-		
+		fRepo.save(func);
 		uRepo.save(renan);
 		uRepo.save(luiza);
 	}

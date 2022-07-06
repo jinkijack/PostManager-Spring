@@ -24,7 +24,6 @@ public class FuncionarioController {
 	
 	@GetMapping("/funcionarios")
 	public String funcionarios(Model model) {
-		
 		List<Funcionario> funcionarios = funcRepo.findAll();
 		
 		model.addAttribute("funcionarios", funcionarios);
@@ -32,49 +31,55 @@ public class FuncionarioController {
 		return "listar_funcionario";
 	}
 	
+	@ModelAttribute("funcionarios")
+    public List<Funcionario> getFuncionarios(){
+        List<Funcionario> funcionarios = funcRepo.findAll();
+        return funcionarios;
+    }
+	
 	@GetMapping("/funcionarios/form")
-	public String funcionarioForm(@ModelAttribute("funcionario")Funcionario funcionario) {
-				
+	public String funcForm(@ModelAttribute("funcionario")Funcionario funcionario) {
+		
 		return "funcionario_form";
 	}
 	
 	@PostMapping("funcionarios/new")
-	public String newFuncionario(@Valid @ModelAttribute("funcionario")Funcionario funcionario, BindingResult br) {
+	public String funcNew(@Valid @ModelAttribute("funcionario")Funcionario funcionario, BindingResult br) {
 		
 		if(br.hasErrors()) {
-			return "user_form";
+			return "funcionario_form";
 		}
 		
 		funcRepo.save(funcionario);
+
 		
 		return "redirect:/funcionarios";
 	}
-	
-	@GetMapping("/funcionarios/{id}")
-	public String funcionarioForm(@PathVariable("id") Integer id, Model model) {
+	@GetMapping("funcionarios/{id}")
+	public String funcForm(@PathVariable("id") Integer id, Model model) {
 		
-		Optional<Funcionario> funcionarioOpt = funcRepo.findById(id);
-		
-		if(funcionarioOpt.isEmpty())
-			throw new IllegalArgumentException("Funcionario Invalido!");
-		
-		Funcionario funcionario = funcionarioOpt.get();
+		Optional<Funcionario> funcOpt = funcRepo.findById(id);
+		if(funcOpt.isEmpty()) {
+			throw new IllegalArgumentException("Usuário inválido!");
+		}
+		Funcionario funcionario = funcOpt.get();
 		model.addAttribute("funcionario", funcionario);
-			
+		
 		return "funcionario_form";
 	}
-	
-	public String funcionarioDelete(@PathVariable("id") Integer id){
+	@GetMapping("funcionarios/delete/{id}")
+	public String funcDelete(@PathVariable("id") Integer id) {
 		
-		Optional<Funcionario> funcionarioOpt = funcRepo.findById(id);
+		Optional<Funcionario> funcOpt = funcRepo.findById(id);
 		
-		if(funcionarioOpt.isEmpty())
-			throw new IllegalArgumentException("Funcionario Invalido");
+		if(funcOpt.isEmpty())
+			throw new IllegalArgumentException("Usuario invalido!");
 		
-		Funcionario funcionario = funcionarioOpt.get();
+		Funcionario funcionario = funcOpt.get();
+		
 		
 		funcRepo.delete(funcionario);
 		
-		return "redirect:/funcionarios";
+		return"redirect:/funcionarios";
 	}
 }
