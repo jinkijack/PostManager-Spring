@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.Cidade;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.User;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.AddressRepository;
+import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.CidadeRepository;
 import br.edu.ifsuldeminas.mch.si.webii.postmanager.spring.model.repositories.UserRepository;
 
 @Controller
@@ -26,6 +28,9 @@ public class UserController {
 	@Autowired
 	private AddressRepository addressRepo;
 	
+	@Autowired
+	private CidadeRepository cidadeRepo;
+	
 	@GetMapping("/users")
 	public String users(Model model) {
 		List<User> users = userRepo.findAll();
@@ -35,6 +40,11 @@ public class UserController {
 		return"listar_usuario";
 	}
 	
+	@ModelAttribute("cidades")
+    public List<Cidade> getCidades(){
+        List<Cidade> cidades = cidadeRepo.findAll();
+        return cidades;
+    }
 	
 	@GetMapping("/users/form")
 	public String userForm(@ModelAttribute("user")User user) {
