@@ -5,16 +5,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@NotBlank(message="Rua não pode ser vazio")
 	private String place;
+	
+	@NotNull(message="Número não pode ser vazio")
 	private Integer number;
+	
+	@NotBlank(message="CEP não pode ser vazio")
 	private String zipCode;
 	
+	@Valid
 	@ManyToOne
 	private Cidade cidade;
 	

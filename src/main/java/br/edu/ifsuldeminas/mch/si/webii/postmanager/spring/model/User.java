@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "users")
@@ -26,6 +28,7 @@ public class User {
 	@NotBlank(message = "Gênero não pode ser vazio")
 	private String gender;
 	
+	@Valid
 	@OneToOne
 	private Address address;
 	

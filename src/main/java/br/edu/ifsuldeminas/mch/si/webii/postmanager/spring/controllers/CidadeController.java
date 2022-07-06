@@ -30,6 +30,13 @@ public class CidadeController {
 		
 		return "listar_cidade";
 	}
+	
+	@ModelAttribute("cidades")
+    public List<Cidade> getCidades(){
+        List<Cidade> cidades = cidadeRepo.findAll();
+        return cidades;
+    }
+	
 	@GetMapping("/cidades/form")
 	public String cidadeForm(@ModelAttribute("cidade")Cidade cidade) {
 		

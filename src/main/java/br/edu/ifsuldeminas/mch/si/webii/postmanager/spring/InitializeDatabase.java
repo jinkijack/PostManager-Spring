@@ -35,6 +35,15 @@ public class InitializeDatabase implements CommandLineRunner{
 		aLuiza.setNumber(1);
 		aLuiza.setZipCode("321");
 		
+		Cidade machado = new Cidade();
+		machado.setName("Machado");
+		machado.setState("MG");
+		
+		cRepo.save(machado);
+		
+		aRenan.setCidade(machado);
+		aLuiza.setCidade(machado);
+		
 		aRepo.save(aRenan);
 		aRepo.save(aLuiza);
 		aRepo.flush();
@@ -51,14 +60,11 @@ public class InitializeDatabase implements CommandLineRunner{
 		luiza.setGender("F");
 		luiza.setAddress(aLuiza);
 		
-		Cidade machado = new Cidade();
-		machado.setName("Machado");
-		machado.setState("MG");
 		
-		aRenan.setCidade(machado);
-		aLuiza.setCidade(machado);
 		
-		cRepo.save(machado);
+		
+		
+		
 		uRepo.save(renan);
 		uRepo.save(luiza);
 	}

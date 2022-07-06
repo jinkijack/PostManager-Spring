@@ -5,11 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 
 @Entity
-@Table(name = "Cidades")
 public class Cidade {
 	
 public Cidade() {}
@@ -24,7 +24,7 @@ public Cidade() {}
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@NotBlank(message="Nome não pode ser vazio")
+	@NotBlank(message="Cidade não pode ser vazio")
 	private String name;
 	
 	@NotBlank(message="Estado não pode ser vazio")
