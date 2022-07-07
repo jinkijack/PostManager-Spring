@@ -68,7 +68,7 @@ public class InitializeDatabase implements CommandLineRunner{
 		Funcionario func = new Funcionario();
 		func.setName("joãozinho123");
 		func.setEmail("hoahda@gmail.com");
-		func.setGender("m");
+		func.setGender("M");
 		
 		
 		fRepo.save(func);

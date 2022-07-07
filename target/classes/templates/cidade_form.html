@@ -37,23 +37,36 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Menus
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsuarios" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Usuários
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="../users">Usuários</a></li>
-            <li><a class="dropdown-item" href="../cidades">Cidades</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownUsers">
+            <li><a class="dropdown-item" href="../users">Listar</a></li>
+            <li><a class="dropdown-item" href="../users/form">Adicionar</a></li>
 
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCidades" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cidades
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownCidades">
+            <li><a class="dropdown-item" href="../cidades">Listar</a></li>
+            <li><a class="dropdown-item" href="../cidades/form">Adicionar</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFuncionarios" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Funcionários
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownFuncionarios">
+            <li><a class="dropdown-item" href="../funcionarios">Listar</a></li>
+            <li><a class="dropdown-item" href="../funcionarios/form">Adicionar</a></li>
+
+          </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
