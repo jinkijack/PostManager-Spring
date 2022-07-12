@@ -43,13 +43,13 @@ public class CidadeController {
 		return "cidade_form";
 	}
 	@PostMapping("cidades/new")
-	public String userNew(@Valid @ModelAttribute("cidade")Cidade cidade, BindingResult br) {
+	public String cidadeNew(@Valid @ModelAttribute("cidade")Cidade cidade, BindingResult br) {
 		
 		if(br.hasErrors()) {
 			return "cidade_form";
 		}
 		
-		cidadeRepo.save(cidade);
+		cidadeRepo.saveAndFlush(cidade);
 
 		
 		return "redirect:/cidades";

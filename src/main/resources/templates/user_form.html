@@ -104,13 +104,20 @@
 			<input type="text" th:field="*{address.zipCode}" placeholder="CEP" class="form-control mb-4 col-4">
              
           
-            <select type="text" th:field="*{address.cidade.name}" class="form-control mb-4 col-4">
-				<option th:each="cidade: ${cidades}" 
-						th:text="${cidade.name + ',  ' +cidade.state}" 
-						th:value="${cidade}">
-				</option>			
-			</select>
-             		
+		<select  name="cidade"  th:field="*{address.cidade.name}" class="form-control mb-4 col-4">
+			<option th:each="cidade: ${cidades}" th:text="${cidade.name}" th:value="${cidade.getName()}"></option>
+		</select>
+
+		<select  name="cidade"  th:field="*{address.cidade.state}" class="form-control mb-4 col-4">
+			<option th:each="cidade: ${cidades}" th:text="${cidade.state}" th:value="${cidade.getState()}"></option>
+		</select> 
+<!--  
+			<span th:if="${#fields.hasErrors('address.cidade.name')}" th:errors="*{address.cidade.name}" class="text-danger"></span>
+			<input type="text" th:field="*{address.cidade.name}" placeholder="Nome Cidade" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('address.cidade.state')}" th:errors="*{address.cidade.state}" class="text-danger"></span>
+			<input type="text" th:field="*{address.cidade.state}" placeholder="Estado" class="form-control mb-4 col-4">
+             		-->
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>
 		<hr>

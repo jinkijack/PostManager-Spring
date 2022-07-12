@@ -76,9 +76,24 @@
 </nav>
 
 	<div class="container my-2">
-		<h1>Pagina Inicial</h1>
-		   <p>Projeto Post Manager em spring, utilize a navbar para entrar nas páginas</p>
+		<h1 class="text-center">Pagina Inicial</h1>
 	</div>
+	
+	<div class="container my-2 text-center">
+			
+			<a th:href="@{/users}" 
+			   class="btn btn-primary ">Usuário</a>
+			<a th:href="@{/funcionarios}" 
+			   class="btn btn-primary ">Funcionários</a>
+			<a th:href="@{/cidades}" 
+			   class="btn btn-primary ">Cidades</a>
+			<a th:href="@{/users/form}" 
+			   class="btn btn-primary ">Adicionar Usuário</a>
+			<a th:href="@{/funcionarios/form}" 
+			   class="btn btn-primary ">Adicionar Funcionário</a>
+			<a th:href="@{/cidades/form}" 
+			   class="btn btn-primary">Adicionar Cidade</a> 
+		</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	

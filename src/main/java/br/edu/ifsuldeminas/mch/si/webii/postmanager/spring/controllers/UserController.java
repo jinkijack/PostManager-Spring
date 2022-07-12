@@ -58,9 +58,9 @@ public class UserController {
 		if(br.hasErrors()) {
 			return "user_form";
 		}
-		
-		addressRepo.save(user.getAddress());
-		userRepo.save(user);
+		cidadeRepo.save(user.getAddress().getCidade());
+		addressRepo.saveAndFlush(user.getAddress());
+		userRepo.saveAndFlush(user);
 		
 		return "redirect:/users";
 	}

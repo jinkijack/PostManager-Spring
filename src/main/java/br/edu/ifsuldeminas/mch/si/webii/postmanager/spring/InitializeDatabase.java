@@ -30,34 +30,35 @@ public class InitializeDatabase implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Address aRenan = new Address();
-		aRenan.setPlace("bilurilu");
-		aRenan.setNumber(1);
-		aRenan.setZipCode("321");
-		
-		Address aLuiza = new Address();
-		aLuiza.setPlace("bilurilu");
-		aLuiza.setNumber(1);
-		aLuiza.setZipCode("321");
 		
 		Cidade machado = new Cidade();
 		machado.setName("Machado");
 		machado.setState("MG");
 		
-		cRepo.save(machado);
+		cRepo.saveAndFlush(machado);
 		
-		aRenan.setCidade(machado);
+		Address atiago = new Address();
+		atiago.setPlace("rua");
+		atiago.setNumber(1);
+		atiago.setZipCode("321");
+		
+		Address aLuiza = new Address();
+		aLuiza.setPlace("rua");
+		aLuiza.setNumber(1);
+		aLuiza.setZipCode("321");
+		
+		
+		atiago.setCidade(machado);
 		aLuiza.setCidade(machado);
 		
-		aRepo.save(aRenan);
-		aRepo.save(aLuiza);
-		aRepo.flush();
+		aRepo.saveAndFlush(atiago);
+		aRepo.saveAndFlush(aLuiza);
 		
-		User renan = new User();
-		renan.setName("Renan");
-		renan.setEmail("renan@gmail.com");
-		renan.setGender("M");
-		renan.setAddress(aRenan);
+		User tiago = new User();
+		tiago.setName("tiago");
+		tiago.setEmail("tiago@gmail.com");
+		tiago.setGender("M");
+		tiago.setAddress(atiago);
 		
 		User luiza = new User();
 		luiza.setName("Luiza carvalho");
@@ -65,15 +66,17 @@ public class InitializeDatabase implements CommandLineRunner{
 		luiza.setGender("F");
 		luiza.setAddress(aLuiza);
 		
+		uRepo.saveAndFlush(tiago);
+		uRepo.saveAndFlush(luiza);
+		
 		Funcionario func = new Funcionario();
 		func.setName("joãozinho123");
 		func.setEmail("hoahda@gmail.com");
 		func.setGender("M");
 		
 		
-		fRepo.save(func);
-		uRepo.save(renan);
-		uRepo.save(luiza);
+		fRepo.saveAndFlush(func);
+
 	}
 
 }
